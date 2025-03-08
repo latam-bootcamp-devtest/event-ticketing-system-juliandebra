@@ -5,7 +5,7 @@ import About from "./pages/About";
 import AdminPanel from "./pages/AdminPanel";
 import CreateEvent from "./pages/CreateEvent";
 import DetailEvent from "./pages/DetailEvent";
-
+import "./App.css";
 function App() {
   return (
     <>

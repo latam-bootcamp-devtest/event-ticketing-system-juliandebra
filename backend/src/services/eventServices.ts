@@ -7,18 +7,6 @@ export const getEventsService = async (
   pageSize: number,
   page: number
 ): Promise<Event[]> => {
-  // const events = await eventModel.findAndCount({
-  //   where: { date: MoreThan(String(new Date())) },
-  //   order: { date: "ASC" },
-  //   skip: (page - 1) * pageSize,
-  //   take: pageSize,
-  // });
-  // console.log(events);
-  // return {
-  //   currentPage: page,
-  //   pageSize: pageSize,
-  //   events: events,
-  // };
   const events = await eventModel.find();
   return events;
 };

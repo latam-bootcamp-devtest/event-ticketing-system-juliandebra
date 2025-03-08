@@ -26,8 +26,13 @@ export const getEvent = async (req: Request, res: Response) => {
 };
 export const createEvent = async (req: Request, res: Response) => {
   try {
-    const { name, date, availableSeats } = req.body;
-    const newEvent = await createEventService({ name, date, availableSeats });
+    const { name, date, availableSeats, price } = req.body;
+    const newEvent = await createEventService({
+      name,
+      date,
+      availableSeats,
+      price,
+    });
     res.status(201).json(newEvent);
   } catch (err) {
     res.status(400).json({ message: "Error creating event" });

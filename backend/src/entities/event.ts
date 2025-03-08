@@ -12,6 +12,9 @@ class Event {
   @Column()
   date!: string;
 
+  @Column({ nullable: true })
+  price!: number;
+
   @Column()
   availableSeats!: number;
 
