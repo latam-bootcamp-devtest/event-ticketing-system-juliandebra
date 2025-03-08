@@ -15,3 +15,6 @@ export const AppDataSource = new DataSource({
   subscribers: [],
   migrations: [],
 });
+
+export const ticketModel = AppDataSource.getRepository(Ticket);
+export const eventModel = AppDataSource.getRepository(Event);

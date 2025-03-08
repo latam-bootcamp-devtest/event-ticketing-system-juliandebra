@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.use("/ticket", eventRoutes);
-app.use("/ticket", ticketRoutes);
+app.use("/event", eventRoutes);
+app.use("/", ticketRoutes);
 
 export default app;

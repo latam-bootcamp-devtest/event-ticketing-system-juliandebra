@@ -1,9 +1,26 @@
-export const getEventsService = async () => {
-  const events = "";
+import { MoreThan } from "typeorm";
+import { eventModel } from "../config/datasource";
+import { EventDto } from "../dtos/EventDto";
+
+export const getEventsService = async (pageSize: number, page: number) => {
+  // const events = await eventModel.findAndCount({
+  //   where: { date: MoreThan(String(new Date())) },
+  //   order: { date: "ASC" },
+  //   skip: (page - 1) * pageSize,
+  //   take: pageSize,
+  // });
+  // console.log(events);
+  // return {
+  //   currentPage: page,
+  //   pageSize: pageSize,
+  //   events: events,
+  // };
+  const events = await eventModel.find();
   return events;
 };
 
-export const createEventService = async () => {
-  const newEvent = "";
-  return newEvent;
+export const createEventService = async (eventData: EventDto) => {
+  const newEvent = eventModel.create(eventData);
+  const eventCreated = eventModel.save(newEvent);
+  return eventCreated;
 };

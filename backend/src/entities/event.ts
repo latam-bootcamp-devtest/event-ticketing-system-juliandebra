@@ -15,7 +15,7 @@ class Event {
   @Column()
   availableSeats!: number;
 
-  @OneToMany(() => Ticket, (ticket) => ticket.event)
+  @OneToMany(() => Ticket, (ticket) => ticket.eventId)
   ticket!: Ticket;
 }
 export default Event;
