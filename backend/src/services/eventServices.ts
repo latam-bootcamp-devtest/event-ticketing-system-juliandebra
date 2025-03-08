@@ -1,8 +1,12 @@
 import { MoreThan } from "typeorm";
 import { eventModel } from "../config/datasource";
 import { EventDto } from "../dtos/EventDto";
+import Event from "../entities/event";
 
-export const getEventsService = async (pageSize: number, page: number) => {
+export const getEventsService = async (
+  pageSize: number,
+  page: number
+): Promise<Event[]> => {
   // const events = await eventModel.findAndCount({
   //   where: { date: MoreThan(String(new Date())) },
   //   order: { date: "ASC" },
@@ -19,7 +23,16 @@ export const getEventsService = async (pageSize: number, page: number) => {
   return events;
 };
 
-export const createEventService = async (eventData: EventDto) => {
+export const getEventService = async (id: number): Promise<Event> => {
+  const event = await eventModel.findOneBy({ id });
+  if (!event) throw new Error("Event doesn't exists");
+
+  return event;
+};
+
+export const createEventService = async (
+  eventData: EventDto
+): Promise<Event> => {
   const newEvent = eventModel.create(eventData);
   const eventCreated = eventModel.save(newEvent);
   return eventCreated;
